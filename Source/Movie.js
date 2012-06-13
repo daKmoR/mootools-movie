@@ -17,7 +17,6 @@ var Movie = new Class({
 	options: {
 		duration: 100000,
 		frameSkip: false,
-		wheelstep: 40,
 		notMovie: false
 	},
 	
@@ -26,20 +25,6 @@ var Movie = new Class({
 	initialize: function(options) {
 		this.parent(options);
 		(function() { this.start(); this.pause(); }).delay(500, this);
-		
-		document.addEvent('mousewheel', function(event) {
-			if (event.wheel > 0) {
-				/* up */
-				var goTo = (this.frame - this.options.wheelstep < 0) ? 0 : this.frame - this.options.wheelstep;
-				//console.log('wheel', goTo);
-				this.transitionToFrame(goTo);
-			} else if (event.wheel < 0) {
-				var goTo = (this.frame + this.options.wheelstep > this.frames) ? this.frames : this.frame + this.options.wheelstep;
-				//console.log('wheel', goTo);
-				this.transitionToFrame(goTo);
-			}
-		}.bind(this));
-		
 	},
 	
 	step: function(now) {
