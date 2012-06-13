@@ -1,0 +1,2 @@
+[data-behavior='Movie'] { position: relative; overflow: hidden; }
+	[data-behavior='Movie'] > * { position: absolute; }

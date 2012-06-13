@@ -1,0 +1,20 @@
+name: "Movie"
+exports: "mootools-movie.js"
+web: "[mooforum.net](http://mooforum.net)"
+description: "MooTools Movie Behavior"
+license: "[MIT License](http://mootools.net/license.txt)"
+copyright: "&copy; [mooforum](http://mooforum.net)"
+authors: "[Thomas Allmer](http://mooforum.net)"
+
+author: daKmoR
+category: Interface
+tags: [animation, gallery, slide]
+#docs: http://url.to.docs
+#demo: http://url.to.demo
+#current: 0.5
+
+sources:
+  - Source/Movie.js
+  - Source/Movie.Element.js
+  - Source/Behaviors/Behavior.Movie.js
+  - Source/Behaviors/Behavior.Movie.Element.js
