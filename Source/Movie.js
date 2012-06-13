@@ -45,29 +45,31 @@ var Movie = new Class({
 	step: function(now) {
 		this.parent(now);
 		//console.log(this.frame);
-		this.fireEvent('f' + this.frame, this.frame);
-		this.fireEvent('frameChange', this.frame);
+		this.fireEvent('f' + this.frame, [this.frame, this.reverse]);
+		this.fireEvent('frameChange', [this.frame, this.reverse]);
 	},
-
-/*	toggle: function() {
-	},
-
-	stop: function() {
-	},*/
 
 	start: function() {
 		this.parent(0, this.options.duration);
-		this.frame = 0;
 	},
 	
 	pause: function() {
-		//this.elements.invoke('pause');
+		console.log('pause');
+		this.elements.invoke('pause');
 		this.parent();
 	},
 	
 	transitionToFrame: function(frame) {
-		this.elements.invoke('transitionToFrame', frame, this.frame);
+		// if (frame === this.frame || frame > this.frames || frame < 0) return this;
+		// this.reverse = frame < this.frame;
+	
+	
+		//this.elements.invoke('transitionToFrame', frame, this.frame);
+		
 		this.parent(frame);
+		console.log('this.reverse', this.reverse);
+		this.elements.invoke('setReverse', this.reverse);
+		this.elements.invoke('resume');
 	}
 
 });
