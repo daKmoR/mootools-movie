@@ -11,7 +11,7 @@ name: Delegator.Movie.Controls
 (function(){
 
 	var triggers = {};
-	['Start', 'Stop', 'Pause', 'Resume'].each(function(action) {
+	['start', 'stop', 'pause', 'resume'].each(function(action) {
 
 		triggers['Movie.' + action] = {
 			defaults: {
@@ -38,7 +38,7 @@ name: Delegator.Movie.Controls
 
 		defaults: {
 			targets: '!div > [data-behavior="Movie"], !div > * > [data-behavior="Movie"]',
-			step: 40
+			step: 20
 		},
 
 		handler: function(event, link, api) {

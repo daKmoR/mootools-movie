@@ -47,6 +47,11 @@ var Movie = new Class({
 		this.frame = -1;
 	},
 	
+	resume: function() {
+		this.elements.invoke('resume');
+		this.parent();
+	},
+	
 	transitionToFrame: function(frame) {
 		if (frame === this.frame || frame > this.frames || frame < 0 || (this.frame == -1 && frame == 0)) return this;
 		//console.log('frame', this.frame + ' -> ' + frame);
