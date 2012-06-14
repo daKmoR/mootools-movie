@@ -24,7 +24,7 @@ var Movie = new Class({
 
 	initialize: function(options) {
 		this.parent(options);
-		(function() { this.start(); this.pause(); }).delay(500, this);
+		(function() { this.start(); this.pause(); }).delay(50, this);
 	},
 	
 	step: function(now) {
@@ -58,6 +58,12 @@ var Movie = new Class({
 		this.parent(frame);
 		this.elements.invoke('setReverse', this.reverse);
 		this.elements.invoke('resume');
+	},
+	
+	moveToFrame: function(frame) {
+		if (frame === this.frame || frame > this.frames || frame < 0 || (this.frame == -1 && frame == 0)) return this;
+		this.parent(frame);
+		this.elements.invoke('moveToFrame', frame, true);
 	}
 
 });

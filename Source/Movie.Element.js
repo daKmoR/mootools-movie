@@ -71,6 +71,15 @@ Movie.Element = new Class({
 						}.bind(this));
 						fx.frame = fx.frames;
 					}
+					
+					if (this.movie._moveToFrame === true) {
+						this.fxs.each(function(fx) {
+							if (fx.startFrame === startFrame && fx.property === property) {
+								//console.log('MOVEendFrame', fx.element.src);
+								fx.goToFrame(fx.frames);
+							}
+						});
+					}
 				}.bind(this));
 				
 			}, this);
@@ -89,6 +98,13 @@ Movie.Element = new Class({
 		var reverse = reverse === false ? false : true;
 		this.fxs.each(function(fx) {
 			fx.reverse = reverse;
+		});
+	},
+	
+	moveToFrame: function(frame, relative) {
+		var relative = relative === true ? true : false;
+		this.fxs.each(function(fx) {
+			fx.goToFrame(frame - fx.startFrame);
 		});
 	}
 	
