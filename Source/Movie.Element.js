@@ -47,35 +47,46 @@ Movie.Element = new Class({
 				/* EVENT */
 				this.movie.addEvent('f' + startFrame, function(frame, reverse) {
 					if (reverse === false) {
-						//console.log('START', this.element.get('src'));
+						//console.log('STARTstart ' + fxOptions.property + ': ' + this.element.get('src'));
 						var fx = new Fx.Tween(this.element, fxOptions);
 						this.fxs.push(fx);
 						fx.startFrame = startFrame;
 						fx.setOptions(fxOptions);
 						fx.start(fxsOptions).chain(function() {
+							//console.log('delete ' + fx.property + ': ' + fx.element.get('src'));
 							this.fxs.erase(fx);
 						}.bind(this));
+					}
+					
+					if (this.movie._moveToFrame === true && reverse === true) {
+						this.fxs.each(function(fx) {
+							if (fx.startFrame === startFrame && fx.property === property) {
+								//console.log('MOVEstartFrame ' + fx.property + ': ' + fx.element.get('src'));
+								fx.goToFrame(-1);
+							}
+						});
 					}
 				}.bind(this));
 				
 				this.movie.addEvent('f' + endFrame, function(frame, reverse) {
 					if (reverse === true) {
-						//console.log('START', this.element.get('src'));
+						//console.log('STARTend ' + fxOptions.property + ': ' + this.element.get('src'));
 						var fx = new Fx.Tween(this.element, fxOptions);
 						this.fxs.push(fx);
 						fx.startFrame = startFrame;
 						fx.reverse = true;
 						fx.setOptions(fxOptions);
 						fx.start(fxsOptions).chain(function() {
+							//console.log('delete ' + fx.property + ': ' + fx.element.get('src'));
 							this.fxs.erase(fx);
 						}.bind(this));
 						fx.frame = fx.frames;
 					}
 					
-					if (this.movie._moveToFrame === true) {
+					if (this.movie._moveToFrame === true && reverse === false) {
 						this.fxs.each(function(fx) {
 							if (fx.startFrame === startFrame && fx.property === property) {
-								//console.log('MOVEendFrame', fx.element.src);
+								//console.log('MOVEendFrame ' + fx.property + ': ' + fx.element.get('src'));
 								fx.goToFrame(fx.frames);
 							}
 						});

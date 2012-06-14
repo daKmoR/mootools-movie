@@ -63,6 +63,8 @@ var Movie = new Class({
 	moveToFrame: function(frame) {
 		if (frame === this.frame || frame > this.frames || frame < 0 || (this.frame == -1 && frame == 0)) return this;
 		this.parent(frame);
+		
+		this.elements.invoke('setReverse', this.reverse);
 		this.elements.invoke('moveToFrame', frame, true);
 	}
 
