@@ -24,6 +24,20 @@ Movie.Marker = new Class({
 		this.setOptions(options);
 		this.frame = frame;
 		this.movie = movie;
+		/* EVENT */
+		this.movie.addEvent('f' + frame, function(frame, reverse) {
+			if (this.options.method === 'setLocation') {
+				this.setLocation();
+			}
+		}.bind(this));
+	},
+	
+	moveToFrame: function() {
+		this.movie.moveToFrame(this.frame);
+	},
+	
+	setLocation: function() {
+		document.location = this.options.location;
 	}
 	
 });
@@ -76,14 +90,14 @@ Movie.implement({
 	next: function(frame) {
 		var nextMarker = this.findNextMarker(frame);
 		if (nextMarker) {
-			this.moveToFrame(nextMarker.frame);
+			nextMarker[nextMarker.options.method]();
 		}
 	},
 	
 	previous: function(frame) {
 		var previousMarker = this.findPreviousMarker(frame);
 		if (previousMarker) {
-			this.moveToFrame(previousMarker.frame);
+			previousMarker[previousMarker.options.method]();
 		}
 	}
 

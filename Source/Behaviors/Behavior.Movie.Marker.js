@@ -22,6 +22,12 @@ Behavior.addGlobalFilter('Movie.Marker', {
 		var Movie = target.getBehaviorResult('Movie');
 		
 		var options = {};
+		if (api.getAs(String, 'method')) {
+			options.method = api.getAs(String, 'method');
+		}
+		if (api.getAs(String, 'location')) {
+			options.location = api.getAs(String, 'location');
+		}
 
 		var MovieMarker = Movie.addMarker(api.getAs(Number, 'frame'), options);
 		return MovieMarker;
