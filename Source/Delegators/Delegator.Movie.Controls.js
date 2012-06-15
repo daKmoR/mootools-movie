@@ -11,7 +11,7 @@ name: Delegator.Movie.Controls
 (function(){
 
 	var triggers = {};
-	['start', 'stop', 'pause', 'resume'].each(function(action) {
+	['start', 'stop', 'pause', 'resume', 'next', 'previous'].each(function(action) {
 
 		triggers['Movie.' + action] = {
 			defaults: {

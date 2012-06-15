@@ -15,14 +15,6 @@ Behavior.addGlobalFilter('Movie', {
 	},
 
 	setup: function(element, api) {
-	
-		// $('blue').set('tween', { duration: 10000 }).tween('width', 700);
-		// $('click2').addEvent('click', function(e) {
-			// e.stop();
-			// //$('blue').get('tween').goToFrame(150);
-			// $('blue').get('tween').resume();
-		// });
-		
 		var options = {};
 		var movie = new Movie(element, options);
 		

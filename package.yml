@@ -16,6 +16,8 @@ tags: [animation, gallery, slide]
 sources:
   - Source/Movie.js
   - Source/Movie.Element.js
+  - Source/Movie.Marker.js
   - Source/Behaviors/Behavior.Movie.js
   - Source/Behaviors/Behavior.Movie.Element.js
+  - Source/Behaviors/Behavior.Movie.Marker.js
   - Source/Delegators/Delegator.Movie.Controls.js
