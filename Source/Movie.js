@@ -16,8 +16,7 @@ var Movie = new Class({
 
 	options: {
 		duration: 100000,
-		frameSkip: false,
-		notMovie: false
+		frameSkip: false
 	},
 	
 	elements: [],
@@ -65,7 +64,8 @@ var Movie = new Class({
 		this.parent(frame);
 		
 		this.elements.invoke('setReverse', this.reverse);
-		this.elements.invoke('moveToFrame', frame, true);
+		this.elements.invoke('moveToFrame', frame);
+		this.pause();
 	}
 
 });
