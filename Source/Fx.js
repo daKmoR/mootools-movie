@@ -35,7 +35,8 @@ var Fx = this.Fx = new Class({
 		notMovie: true
 	},
 	
-	_transitionToFrame: 1000000000000,
+	_transitionToFrame: false,
+	_moveToFrame: false,
 	reverse: false,
 
 	initialize: function(options){
@@ -65,7 +66,7 @@ var Fx = this.Fx = new Class({
 		if (this.frame < this.frames && this.frame > 0){
 			var delta = this.transition(this.frame / this.frames);
 			this.set(this.compute(this.from, this.to, delta));
-			if (this.frame == this._transitionToFrame){
+			if (this._transitionToFrame && this.frame == this._transitionToFrame){
 				this.pause();
 			}
 		} else if (this.frame > this.frames){

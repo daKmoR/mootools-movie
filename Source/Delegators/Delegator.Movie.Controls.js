@@ -37,7 +37,7 @@ name: Delegator.Movie.Controls
 	Delegator.register('mousewheel', 'Movie.MouseWheel', {
 
 		defaults: {
-			targets: '!div > [data-behavior="Movie"], !div > * > [data-behavior="Movie"]',
+			targets: '[data-behavior="Movie"], !div > [data-behavior="Movie"], !div > * > [data-behavior="Movie"]',
 			step: 20
 		},
 
