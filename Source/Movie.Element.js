@@ -39,6 +39,7 @@ Movie.Element = new Class({
 					}
 				});
 				fxOptions.property = property;
+				fxOptions.frameSkip = false;
 				
 				var startFrame = this.startFrame.toInt();
 				var duration = fxOptions.duration ? fxOptions.duration : 500;

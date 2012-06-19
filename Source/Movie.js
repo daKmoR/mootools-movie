@@ -4,7 +4,7 @@
 name: Movie
 description: Movie Class, to combine various animations (frame based) [CSS:Movie/Source/Css/Movie.css]
 license: MIT-style license.
-requires: [Core/Fx.Tween, Core/Fx.Transitions]
+requires: [Core/Fx, Fx, Core/Fx.Transitions, Core/Fx.Tween]
 provides: [Movie]
 
 ...

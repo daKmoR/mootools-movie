@@ -8,12 +8,13 @@ authors: "[Thomas Allmer](http://mooforum.net)"
 
 author: daKmoR
 category: Interface
-tags: [animation, gallery, slide]
+tags: [animation, movie, frame]
 #docs: http://url.to.docs
 #demo: http://url.to.demo
 #current: 0.5
 
 sources:
+  - Source/Fx.js
   - Source/Movie.js
   - Source/Movie.Element.js
   - Source/Movie.Marker.js
