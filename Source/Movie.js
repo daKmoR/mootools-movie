@@ -16,7 +16,8 @@ var Movie = new Class({
 
 	options: {
 		duration: 100000,
-		frameSkip: false
+		frameSkip: false,
+		checkDurations: false
 	},
 	
 	elements: [],

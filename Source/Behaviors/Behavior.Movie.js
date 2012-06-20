@@ -12,11 +12,13 @@ script: Behavior.Movie.js
 Behavior.addGlobalFilter('Movie', {
 
 	defaults: {
+		checkdurations: false
 	},
 
 	setup: function(element, api) {
 		var options = {};
-		var movie = new Movie(element, options);
+		options.checkDurations = api.getAs(Boolean, 'checkdurations');
+		var movie = new Movie(options);
 		
 		return movie;
 	}

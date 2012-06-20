@@ -26,6 +26,10 @@ Movie.Element = new Class({
 		this.movie = movie;
 		this.element = element;
 		
+		if (this.movie.options.checkDurations === true) {
+			this.checkDurations();
+		}
+		
 		Object.each(this.options, function(values, startFrame) {
 			this.startFrame = startFrame;
 			
@@ -94,6 +98,26 @@ Movie.Element = new Class({
 					}
 				}.bind(this));
 				
+			}, this);
+		}, this);
+	},
+	
+	checkDurations: function() {
+		Object.each(this.options, function(values, startFrame) {
+			this.startFrame = startFrame.toInt();
+			if (this.endFrame && this.startFrame < this.endFrame) {
+				console.error('Movie Error: at Frame "' + this.startFrame + '" the Property "' + this.property + '" starts although a previous animation on this element is not finished!', this.element);
+			}
+			Object.each(values, function(fxsOptions, property) {
+				var fxOptions = {};
+				fxsOptions.each(function(o) {
+					if (typeOf(o) == 'object') {
+						fxOptions = o;
+					}
+				});
+				this.property = property;
+				var duration = fxOptions.duration ? fxOptions.duration : 500;
+				this.endFrame = this.startFrame + Math.round(duration / 1000 * 60);
 			}, this);
 		}, this);
 	},

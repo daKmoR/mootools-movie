@@ -21,4 +21,5 @@ sources:
   - Source/Behaviors/Behavior.Movie.js
   - Source/Behaviors/Behavior.Movie.Element.js
   - Source/Behaviors/Behavior.Movie.Marker.js
+  - Source/Behaviors/Behavior.Movie.Frame.js
   - Source/Delegators/Delegator.Movie.Controls.js
