@@ -14,7 +14,7 @@ Behavior.addGlobalFilter('Movie.Marker', {
 	required: ['frame'],
 
 	defaults: {
-		target: '![data-behavior="Movie"]',
+		target: '![data-behavior="Movie"]'
 	},
 
 	setup: function(element, api) {

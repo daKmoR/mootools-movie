@@ -12,7 +12,7 @@ script: Behavior.Movie.Element.js
 Behavior.addGlobalFilter('Movie.Element', {
 
 	defaults: {
-		target: '![data-behavior="Movie"]',
+		target: '![data-behavior="Movie"]'
 	},
 
 	setup: function(element, api) {

@@ -16,7 +16,7 @@ Behavior.addGlobalFilter('Movie.Frame', {
 	delay: 10,
 
 	defaults: {
-		target: '[data-behavior="Movie"], !div > [data-behavior="Movie"], !div > * > [data-behavior="Movie"], !body [data-behavior="Movie"]',
+		target: '[data-behavior="Movie"], !div > [data-behavior="Movie"], !div > * > [data-behavior="Movie"], !body [data-behavior="Movie"]'
 	},
 
 	setup: function(element, api) {
