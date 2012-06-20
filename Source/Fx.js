@@ -59,10 +59,6 @@ var Fx = this.Fx = new Class({
 			this.frame = this.reverse === false ? this.frame + 1 : this.frame - 1;
 		}
 		
-		// if (this.options.notMovie) {
-			// console.log('step ' + this.frame + ' [' + this.frames + ']');
-		// }
-		
 		if (this.frame < this.frames && this.frame > 0){
 			var delta = this.transition(this.frame / this.frames);
 			this.set(this.compute(this.from, this.to, delta));
@@ -73,12 +69,11 @@ var Fx = this.Fx = new Class({
 			this.frame = this.frames;
 			this.set(this.compute(this.from, this.to, 1));
 			this.stop();
-		} else if (this.frame < 0){
-			this.frame = 0;
+		} else if (this.frame <= -1){
+			this.frame = -1;
 			this.set(this.compute(this.from, this.to, 0));
 			this.stop();
 		}
-		
 	},
 	
 	goToFrame: function(frame) {
@@ -90,7 +85,7 @@ var Fx = this.Fx = new Class({
 	},
 	
 	transitionToFrame: function(frame) {
-		if (frame === this.frame || frame > this.frames || frame < 0 || (this.frame == -1 && frame == 0)) return this;
+		if (frame === this.frame || frame > this.frames || frame < -1) return this;
 		this.reverse = frame < this.frame;
 	
 		this._transitionToFrame = frame;
@@ -99,7 +94,7 @@ var Fx = this.Fx = new Class({
 	},
 	
 	moveToFrame: function(frame) {
-		if (frame === this.frame || frame > this.frames || frame < 0 || (this.frame == -1 && frame == 0)) return this;
+		if (frame === this.frame || frame > this.frames || frame < -1) return this;
 		this.reverse = frame < this.frame;
 	
 		this._transitionToFrame = frame;
@@ -146,11 +141,11 @@ var Fx = this.Fx = new Class({
 	},
 
 	stop: function(){
-		//console.log('stop [' + this.frame + ']', this.paused);
+		//console.log('stop [' + this.frame + ']');
 		if (this.isRunning() || this.paused){
 			this.time = null;
 			pullInstance.call(this, this.options.fps);
-			if (this.frames == this.frame || this.frame == 0){
+			if (this.frames == this.frame || this.frame <= -1){
 				this.fireEvent('complete', this.subject);
 				if (!this.callChain()) this.fireEvent('chainComplete', this.subject);
 			} else {

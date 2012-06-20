@@ -28,8 +28,10 @@ var Movie = new Class({
 	
 	step: function(now) {
 		this.parent(now);
-		this.fireEvent('f' + this.frame, [this.frame, this.reverse]);
-		this.fireEvent('frameChange', [this.frame, this.reverse]);
+		if (this.frame >= 0) {
+			this.fireEvent('f' + this.frame, [this.frame, this.reverse]);
+			this.fireEvent('frameChange', [this.frame, this.reverse]);
+		}
 	},
 
 	start: function() {
@@ -43,7 +45,6 @@ var Movie = new Class({
 	
 	stop: function() {
 		this.pause();
-		this.frame = -1;
 	},
 	
 	resume: function() {
@@ -52,7 +53,8 @@ var Movie = new Class({
 	},
 	
 	transitionToFrame: function(frame) {
-		if (frame === this.frame || frame > this.frames || frame < 0 || (this.frame == -1 && frame == 0)) return this;
+		//if (frame === this.frame || frame > this.frames || frame < 0 || (this.frame == -1 && frame == 0)) return this;
+		if (frame === this.frame || frame > this.frames || frame < -1) return this;
 		//console.log('frame', this.frame + ' -> ' + frame);
 		this.parent(frame);
 		this.elements.invoke('setReverse', this.reverse);
@@ -60,7 +62,7 @@ var Movie = new Class({
 	},
 	
 	moveToFrame: function(frame) {
-		if (frame === this.frame || frame > this.frames || frame < 0 || (this.frame == -1 && frame == 0)) return this;
+		if (frame === this.frame || frame > this.frames || frame < -1) return this;
 		this.parent(frame);
 		
 		this.elements.invoke('setReverse', this.reverse);
